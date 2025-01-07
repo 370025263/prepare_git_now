@@ -1,40 +1,5 @@
 
-# prepare_git_now
 
-## Introduction
-
-**prepare_git_now** is a script that allows you to quickly configure your Git identity anywhere in China by embedding your private key into the script. You can copy this script to your USB drive, execute it on a new computer, and finish! (Remember to delete/change the read permissions after use.)
-
-### Motivation
-
-Do you often find yourself unable to access Git?
-Do you frequently switch between different machines for development and need to upload Git code without disturbing other users?
-
-Then quickly use this script! You only need to write your private key into this script, copy it to your USB drive, and execute it directly on a new computer. After use, remember to delete/change the read permissions!
-
-## Usage:
-There are two modes of operation:
-
-### 1. No Trace Mode (One-time)
-```bash
-source prepare_git_now.sh
-```
-This will only execute `start_ssh_agent_logic`, which automatically starts `ssh-agent` and adds the `id_rsa` located in the same directory as the script.
-Use this when you want to obtain your identity directly in the current session and use it in any directory.
-**Note:** It is recommended to only source this script in trusted environments.
-
-### 2. Permanent Mode (Requires Private Account)
-```bash
-bash prepare_git_now.sh
-```
-This will interactively ask you whether the environment is "private".
-- If you choose "Yes", it will copy `id_rsa` to `~/.ssh/id_rsa` and use the original logic.
-- If you choose "No", it will execute the `ssh-agent` logic and add the private key without modifying your `~/.ssh/id_rsa`.
-
-*****************Using this on a shared account may overwrite other users' Git configurations*****************
-
----
-```
 
 # prepare_git_now
 
@@ -69,3 +34,41 @@ bash prepare_git_now.sh
 - 如果选择“否”，则执行 `ssh-agent` 逻辑并添加私钥，不会修改您的 `~/.ssh/id_rsa`。
 
 *****************如果你在共享账户上使用，可能会覆盖别人的 Git 配置*****************
+
+
+
+# prepare_git_now
+
+## Introduction
+
+**prepare_git_now** is a script that allows you to quickly configure your Git identity anywhere in China by embedding your private key into the script. You can copy this script to your USB drive, execute it on a new computer, and finish! (Remember to delete/change the read permissions after use.)
+
+### Motivation
+
+Do you often find yourself unable to access Git?
+Do you frequently switch between different machines for development and need to upload Git code without disturbing other users?
+
+Then quickly use this script! You only need to write your private key into this script, copy it to your USB drive, and execute it directly on a new computer. After use, remember to delete/change the read permissions!
+
+## Usage:
+There are two modes of operation:
+
+### 1. No Trace Mode (One-time)
+```bash
+source prepare_git_now.sh
+```
+This will only execute `start_ssh_agent_logic`, which automatically starts `ssh-agent` and adds the `id_rsa` located in the same directory as the script.
+Use this when you want to obtain your identity directly in the current session and use it in any directory.
+**Note:** It is recommended to only source this script in trusted environments.
+
+### 2. Permanent Mode (Requires Private Account)
+```bash
+bash prepare_git_now.sh
+```
+This will interactively ask you whether the environment is "private".
+- If you choose "Yes", it will copy `id_rsa` to `~/.ssh/id_rsa` and use the original logic.
+- If you choose "No", it will execute the `ssh-agent` logic and add the private key without modifying your `~/.ssh/id_rsa`.
+
+*****************Using this on a shared account may overwrite other users' Git configurations*****************
+
+
